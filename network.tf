@@ -1,21 +1,21 @@
-resource "azurerm_resource_group" "RG_net" {
-   name         = "RG_net"
+resource "azurerm_resource_group" "RGtf_net" {
+   name         = "RGtf_net"
    location     = var.loc
    tags         = var.tags
 }
 
 resource "azurerm_public_ip" "vpnGatewayPublicIp" {
   name                = "vpnGatewayPublicIp"
-  resource_group_name = azurerm_resource_group.RG_net.name
-  location            = azurerm_resource_group.RG_net.location
-  tags                = azurerm_resource_group.core.tags
+  resource_group_name = azurerm_resource_group.RGtf_net.name
+  location            = azurerm_resource_group.RGtf_net.location
+  tags                = azurerm_resource_group.RGtf_net.tags
   allocation_method   = "Dynamic"
 }
 
 resource "azurerm_virtual_network" "core" {
   name                = "core"
-  location            = azurerm_resource_group.RG_net.location
-  resource_group_name = azurerm_resource_group.RG_net.name
+  location            = azurerm_resource_group.RGtf_net.location
+  resource_group_name = azurerm_resource_group.RGtf_net.name
   address_space       = ["10.0.0.0/16"]
   dns_servers         = ["1.1.1.1", "1.0.0.1"]
 
