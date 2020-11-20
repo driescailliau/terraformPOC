@@ -8,6 +8,7 @@ resource "azurerm_public_ip" "vpnGatewayPublicIp" {
   name                = "vpnGatewayPublicIp"
   resource_group_name = azurerm_resource_group.RG_net.name
   location            = azurerm_resource_group.RG_net.location
+  tags                = azurerm_resource_group.core.tags
   allocation_method   = "Dynamic"
 }
 
@@ -36,10 +37,23 @@ resource "azurerm_virtual_network" "core" {
 
 /*
 resource "azurerm_vpn_gateway" "vpnGateway" {
-  name                = "vpnGateway"
-  location            = azurerm_resource_group.RG_net.location
-  resource_group_name = azurerm_resource_group.RG_net.name
-  virtual_hub_id      = azurerm_virtual_network.subnet.name["GatewaySubnet"]
-  bgp_settings        = 
+#     name                = "vpnGateway"
+#     location            = "${azurerm_resource_group.core.location}"
+#     resource_group_name = "${azurerm_resource_group.core.name}"
+#     tags                = "${azurerm_resource_group.core.tags}"
+# 
+#     type                = "Vpn"
+#     vpn_type            = "RouteBased"
+# 
+#     sku                 = "Basic"
+#     enable_bgp          = true
+# 
+#     ip_configuration {
+#         name                            = "vpnGwConfig"
+#         public_ip_address_id            = "${azurerm_public_ip.vpnGatewayPublicIp.id}"
+#         private_ip_address_allocation   = "Dynamic"
+#         subnet_id                       = "${azurerm_subnet.GatewaySubnet.id}"
+#     }
+#
 }
 */
