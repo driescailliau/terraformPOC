@@ -11,5 +11,5 @@ variable "tags" {
 }
 
 variable "webapplocs" {
-  default  = ["eastus", "nordeurope", "uksouth"] 
+  default  = ["eastus", "northeurope", "uksouth"] 
 }
