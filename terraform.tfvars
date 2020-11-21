@@ -4,3 +4,4 @@ tags    = {
     env     = "training"
 }
 webapplocs  = ["eastus", "northeurope", "uksouth"] 
+
